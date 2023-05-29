@@ -602,7 +602,7 @@ response = requests.request(
 )
 
 # Write the JSON response to a JSON file
-with open("ebay_search_results.json", "w") as f:
+with open("ebay_product_listings.json", "w") as f:
     json.dump(response.json(), f)
 
 # Instead of a response with job status and results URL, this will return
@@ -765,7 +765,7 @@ response = requests.request(
 )
 
 # Write the JSON response to a .json file.
-with open("ebay_product_results.json", "w") as f:
+with open("ebay_product_page.json", "w") as f:
     json.dump(response.json(), f)
 
 # Instead of a response with job status and results url, this will return the
