@@ -106,7 +106,7 @@ Let’s call it `"titles"`:
 
 > **Note**
 > 
->When creating custom parameter names, you can’t use the
+> When creating custom parameter names, you can’t use the
 underscore symbol `_` at the very beginning.
 
 ```python
