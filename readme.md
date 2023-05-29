@@ -409,6 +409,7 @@ With these parsing instructions, the results are categorized by product:
 In this section, let’s use Custom Parser to parse [<u>this product
 listing page</u>](https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=laptop&_sacat=0&LH_TitleDesc=0&_odkw=laptop&_osacat=0) on eBay:
 
+![](images/ebay_product_listings.png)
 
 The goal is to extract the **title**, **price**, **item condition**,
 **URL**, and **seller information** from each product listing.
@@ -510,7 +511,7 @@ expression doesn’t return any value. This is the case with our target
 page since there are some titles found within the `<span>` tag with an
 attribute set to `class="BOLD"`:
 
-
+![](images/ebay_bold_title.png)
 
 Let’s fully build up the code sample to parse eBay products:
 
@@ -653,6 +654,9 @@ follow. For demonstrational purposes, let’s use [<u>this eBay product page</u>
 to extract the **title**, **price**, and details from the **Item
 specifics** section. The target page looks like this:
 
+![](images/ebay_product_page.png)
+
+![](images/ebay_product_page_item_specifics.png)
 
 The **title** and **price** can be parsed with separate functions.
 Notice the `"amount_from_string"` within the `"price"` field, which extracts
