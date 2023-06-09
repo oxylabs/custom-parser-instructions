@@ -2,7 +2,8 @@
 - [The structure of parsing instructions](#the-structure-of-parsing-instructions)
 - [How to write parsing instructions](#how-to-write-parsing-instructions)
   * [Configuring the payload](#configuring-the-payload)
-  * [Parsing a single field](#parsing-a-single-field)
+  * [Parsing a single field using XPath](#parsing-a-single-field-using-xpath)
+  * [Parsing a single field using CSS selectors](#parsing-a-single-field-using-css-selectors)
   * [Parsing multiple fields with separated results](#parsing-multiple-fields-with-separated-results)
   * [Parsing multiple fields with categorized results](#parsing-multiple-fields-with-categorized-results)
 - [Parsing example of a real target](#parsing-example-of-a-real-target)
@@ -15,7 +16,7 @@ With it, you can:
 
 - Extract all text from an HTML document;
 
-- Parse data using XPath expressions;
+- Parse data using XPath and CSS expressions;
 
 - Manipulate strings with pre-defined functions and regex expressions;
 
@@ -38,14 +39,11 @@ In essence, the parsing instructions have to be specified in the payload
 of the request, which is composed in a JSON format. Parsing instructions
 consist of HTML node selection and value transformation functions.
 
-You’re going to use XPath expressions to select HTML nodes and extract
-data from them. We highly recommend reading our [<u>blog
-post</u>](https://oxylabs.io/blog/xpath-vs-css), where we introduce the
-basics of using XPath.
+You’re going to use XPath expressions or CSS selectors to select HTML nodes and extract data from them. We highly recommend reading our [<u>blog post</u>](https://oxylabs.io/blog/xpath-vs-css), where we introduce the
+basics of using XPath and CSS selectors.
 
 The two XPath functions of Custom Parser are `xpath`, which returns all
-matches, and `xpath_one`, which returns the first match. You can learn
-more about other functions in our [<u>documentation</u>](https://developers.oxylabs.io/).
+matches, and `xpath_one`, which returns the first match. Similarly, there are also two CSS functions you can use – `css` to get all matches and `css_one` to get only the first match. You can learn more about other functions in our [<u>documentation</u>](https://developers.oxylabs.io/).
 
 The structure of parsing instructions can be summed up into four main
 steps:
@@ -96,7 +94,7 @@ payload = {
     "parsing_instructions": {}
 }
 ```
-### Parsing a single field
+### Parsing a single field using XPath
 
 Let’s start by gathering all the book titles from our [<u>target
 page</u>](https://books.toscrape.com/catalogue/page-1.html). Create a
@@ -144,7 +142,9 @@ Then, in the square brackets of the `_fns` field, add the `_fn` and
     }
 }
 ```
-In order to parse all the book titles, set `"_fn"` value to `"xpath"` and
+In this section we’ll use XPath expressions to parse all the book titles. You can find an example of how to use CSS selectors below.
+
+In order to get all the book titles, set `"_fn"` value to `"xpath"` and
 provide one or more XPath expressions in the `"_args"` array. Please note
 that the XPath expressions will be executed in the order they’re found
 in the array. For instance, if the first XPath expression is valid (i.e.
@@ -154,6 +154,7 @@ In this case, all the book titles are in the `<a>` tags, which are
 inside the `<h3>` tag, so the XPath expression can be written as
 `"//h3//a/text()"`. The `text()` in the XPath expression instructs the
 parser to select only the textual values:
+
 ```python
 import requests
 from pprint import pprint
@@ -210,13 +211,84 @@ This code produces the following list of book titles:
   ]
 }
 ```
+### Parsing a single field using CSS selectors
+
+Alternatively, the same result can be achieved using CSS selectors. To do that, set the `"_fn"` value to `"css"`, and provide one or more CSS expressions in the `"_args"` array.
+To parse all the book titles from the target website, you can form the CSS expression as `"h3 > [title]"` since all the titles are inside the `title` attribute. Your parsing instructions should look like this:
+
+```python
+{
+    "parsing_instructions": {
+        "titles": {
+            "_fns": [
+                {
+                    "_fn": "css",
+                    "_args": ["h3 > [title]"]
+                }
+            ]
+        }
+    }
+}
+```
+
+Note that CSS expressions can only 
+select HTML elements, meaning they **can’t directly extract the values**. Hence, using the above code, the received response is a JSON array with HTML elements, including the opening and closing tags.
+To extract the values, you can create another `"_fn"` function within the `"_fns"` array and use the `"element_text"` function of Custom Parser that extracts text and strips leading and trailing whitespaces:
+
+```python
+{
+    "parsing_instructions": {
+        "titles": {
+            "_fns": [
+                {
+                    "_fn": "css",
+                    "_args": ["h3 > [title]"]
+                },
+                {
+                    "_fn": "element_text"
+                }
+            ]
+        }
+    }
+}
+```
+
+This time, the parsing instructions brought back only the text from the `title` attribute:
+
+```bash
+{
+  "titles": [
+    "A Light in the ...",
+    "Tipping the Velvet",
+    "Soumission",
+    "Sharp Objects",
+    "Sapiens: A Brief History ...",
+    "The Requiem Red",
+    "The Dirty Little Secrets ...",
+    "The Coming Woman: A ...",
+    "The Boys in the ...",
+    "The Black Maria",
+    "Starving Hearts (Triangular Trade ...",
+    "Shakespeare's Sonnets",
+    "Set Me Free",
+    "Scott Pilgrim's Precious Little ...",
+    "Rip it Up and ...",
+    "Our Band Could Be ...",
+    "Olio",
+    "Mesaerion: The Best Science ...",
+    "Libertarianism for Beginners",
+    "It's Only the Himalayas"
+  ]
+}
+```
+
 ### Parsing multiple fields with separated results
 
 Let’s include the book prices, which are in the `<p>` tag with an
 attribute `class="price_color"`. You can separate the results by creating
 another field that will hold the prices. The process is the same as
 explained previously – you have to create another field called `"prices"`,
-just like you did with the `"titles"`. The parsing instructions should be
+just like you did with the `"titles"`. The parsing instructions using XPath should be
 as follows:
 ```python
 {
