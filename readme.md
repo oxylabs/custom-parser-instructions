@@ -1,4 +1,6 @@
 # How to Write Parsing Instructions with Custom Parser?
+[![](https://dcbadge.vercel.app/api/server/eWsVUJrnG5)](https://discord.gg/GbxmdGhZjq)
+
 - [The structure of parsing instructions](#the-structure-of-parsing-instructions)
 - [How to write parsing instructions](#how-to-write-parsing-instructions)
   * [Configuring the payload](#configuring-the-payload)
