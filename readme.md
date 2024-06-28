@@ -12,7 +12,7 @@
   * [Product listings](#product-listings)
   * [Product page](#product-page)
 
-Custom Parser is a free feature of Oxylabs [<u>Scraper APIs</u>](https://oxylabs.io/products/scraper-api), which allows you to write your own parsing instructions for a chosen target when needed. While [<u>Adaptive Parser</u>](https://oxylabs.io/features/adaptive-parser), a feature of E-Commerce Scraper API, enables automated parsing of almost any e-commerce product page, the Custom Parser feature expands your options and flexibility throughout the entire process on any website.
+Custom Parser is a free feature of Oxylabs [<u>Scraper APIs</u>](https://oxylabs.io/products/scraper-api), which allows you to write your own parsing instructions for a chosen target when needed. The Custom Parser feature expands your options and flexibility throughout the entire scraping process on any website.
 
 With it, you can:
 
@@ -33,7 +33,7 @@ instructions in Python and will showcase Custom Parser in action.
 
 To start off, you should already have a basic grasp of Oxylabs Scraper
 APIs. If you’re new to our web scraping solutions, you can familiarize
-yourself by reading our [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/getting-started).
+yourself by reading our [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/web-scraper-api/features/custom-parser/getting-started).
 Note that you can only use one parser simultaneously – either a
 Dedicated Parser, Adaptive Parser, or Custom Parser.
 
@@ -45,7 +45,7 @@ You’re going to use XPath expressions or CSS selectors to select HTML nodes an
 basics of using XPath and CSS selectors.
 
 The two XPath functions of Custom Parser are `xpath`, which returns all
-matches, and `xpath_one`, which returns the first match. Similarly, there are also two CSS functions you can use – `css` to get all matches and `css_one` to get only the first match. You can learn more about other functions in our [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/custom-parser/list-of-functions).
+matches, and `xpath_one`, which returns the first match. Similarly, there are also two CSS functions you can use – `css` to get all matches and `css_one` to get only the first match. You can learn more about other functions in our [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/web-scraper-api/features/custom-parser/list-of-functions).
 
 The structure of parsing instructions can be summed up into four main
 steps:
@@ -948,5 +948,5 @@ Writing parsing instructions with Custom Parser may seem daunting at
 first, but with a little practice, you’ll quickly pick it up. This guide
 aims to provide you with the fundamentals of creating parsing
 instructions, yet they highly depend on your target and the goal you’re
-trying to achieve. Explore our in-depth [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/custom-parser)
+trying to achieve. Explore our in-depth [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/web-scraper-api/features/custom-parser)
 to find more about the functions and parameters of Custom Parser.
