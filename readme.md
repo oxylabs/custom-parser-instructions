@@ -30,7 +30,11 @@ With it, you can:
 
 - Perform common string actions like conversion, indexing, and retrieving the length;
 
-- Do mathematical calculations, such as calculating the average, finding the maximum and minimum values, and multiplying values.
+- Do mathematical calculations, such as calculating the average, finding the maximum and minimum values, and multiplying values;
+
+- Save, reuse, and modify [Parser Presets](https://developers.oxylabs.io/scraping-solutions/web-scraper-api/features/result-processing-and-storage/custom-parser/parser-presets) by hosting them on our system;
+
+- View performance and usage statistics of a preset over time.
 
 This guide will teach you the fundamentals of writing custom parsing
 instructions in Python and will showcase Custom Parser in action.
