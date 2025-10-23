@@ -23,21 +23,109 @@ Custom Parser is a free feature of Oxylabs [<u>Scraper APIs</u>](https://oxylabs
 With it, you can:
 
 - Extract all text from an HTML document;
-
 - Parse data using XPath and CSS expressions;
-
 - Manipulate strings with pre-defined functions and regex expressions;
-
 - Perform common string actions like conversion, indexing, and retrieving the length;
-
 - Do mathematical calculations, such as calculating the average, finding the maximum and minimum values, and multiplying values;
-
 - Save, reuse, and modify [Parser Presets](https://developers.oxylabs.io/scraping-solutions/web-scraper-api/features/result-processing-and-storage/custom-parser/parser-presets) by hosting them on our system;
-
+- Enable **Self-healing** for your parser presets to make them resilient to minor layout changes automatically;
 - View performance and usage statistics of a preset over time.
 
-This guide will teach you the fundamentals of writing custom parsing
-instructions in Python and will showcase Custom Parser in action.
+This guide will teach you the fundamentals of writing custom parsing instructions in Python and will showcase Custom Parser in action.
+
+---
+
+## Self-healing parser presets
+
+Oxylabs' [Web Scraper API](https://oxylabs.io/products/scraper-api/web) now supports self-healing functionality in Parser Presets. This feature significantly improves scraping resilience by automatically adjusting parsing logic when target website structures change slightly.
+
+### What are self-healing parser presets?
+
+Self-healing parser presets are Custom Parser configurations that adapt to structural changes in target websites. Once enabled, they monitor their performance and attempt to automatically fix parsing failures caused by layout changes (e.g., altered class names, node paths).
+
+### Why use self-healing?
+
+- **Reduced manual maintenance** – your preset adjusts automatically  
+- **Increased success rates** – scraping jobs stay operational longer  
+- **Efficient scaling** – fewer failures across multiple targets  
+
+### How to enable self-healing for a parser preset
+
+Once you have created a parser preset via the API, you can enable self-healing by sending the following request:
+
+```http
+PUT https://data.oxylabs.io/v1/parsers/presets/{preset_name}
+Content-Type: application/json
+
+{
+  "self_heal": true
+}
+```
+
+## Using a Self-Healing Preset in a Scraping Job
+
+
+When submitting a scraping job, instead of passing `parsing_instructions` in the payload, you can reference your parser preset by name:
+
+
+```json
+{
+"source": "universal",
+"url": "https://example.com",
+"parser_preset": "my_self_healing_preset"
+}
+```
+
+
+## Monitoring Success Rate
+
+
+Track how well your preset is performing using the statistics endpoint:
+
+
+```
+GET https://data.oxylabs.io/v1/parsers/presets/{preset_name}/stats
+```
+
+
+### Example response:
+
+
+```json
+{
+"success_rate": 98,
+"success_rate_by_path": {
+"titles": 100,
+"prices": 96
+},
+"successful_results": 49,
+"total_results": 50
+}
+```
+
+
+These stats help you understand which parts of your parser might need manual review.
+
+
+## Best Practices for Building Self-Healing-Ready Presets
+
+
+- Use multiple fallback selectors (XPath/CSS) in `"_args"`
+- Avoid brittle absolute paths – prefer relative, semantic selectors
+- Monitor `success_rate` to detect unexpected drops
+- Regularly test against updated pages to ensure healing performance
+
+
+For more, visit the [Parser Preset documentation](https://developers.oxylabs.io/scraping-solutions/web-scraper-api/features/custom-parser/parser-presets).
+
+
+---
+
+
+## The Structure of Parsing Instructions
+
+
+(The rest of your README continues here as before — no changes were made to the existing sections.)
 
 ## The structure of parsing instructions
 
