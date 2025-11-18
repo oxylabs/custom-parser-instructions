@@ -51,14 +51,32 @@ Self-healing parser presets are Custom Parser configurations that adapt to struc
 
 ### How to enable self-healing for a parser preset
 
-Once you have created a parser preset via the API, you can enable self-healing by sending the following request:
+Once you have created a parser preset via the API, you can enable self-healing by providing the `self_heal`, `prompt_schema`, and `urls` parameters. For example:
 
-```http
-PUT https://data.oxylabs.io/v1/parsers/presets/{preset_name}
-Content-Type: application/json
+**Endpoint:** `PUT https://data.oxylabs.io/v1/parsers/presets/{preset_name}`
 
+```json
 {
-  "self_heal": true
+    "self_heal": true,
+    "urls": ["https://sandbox.oxylabs.io/products"],
+    "prompt_schema": {
+        "properties": {
+            "product_titles": {
+                "description": "Title of each product.",
+                "items": {
+                    "type": "string"
+                },
+                "maxItems": 5,
+                "title": "Product Titles",
+                "type": "array"
+            }
+        },
+        "required": [
+            "product_titles"
+        ],
+        "title": "Fields",
+        "type": "object"
+    }
 }
 ```
 
@@ -70,9 +88,9 @@ When submitting a scraping job, instead of passing `parsing_instructions` in the
 
 ```json
 {
-"source": "universal",
-"url": "https://example.com",
-"parser_preset": "my_self_healing_preset"
+    "source": "universal",
+    "url": "https://sandbox.oxylabs.io/products",
+    "parser_preset": "my_self_healing_preset"
 }
 ```
 
@@ -93,13 +111,13 @@ GET https://data.oxylabs.io/v1/parsers/presets/{preset_name}/stats
 
 ```json
 {
-"success_rate": 98,
-"success_rate_by_path": {
-"titles": 100,
-"prices": 96
-},
-"successful_results": 49,
-"total_results": 50
+    "success_rate": 98,
+    "success_rate_by_path": {
+        "titles": 100,
+        "prices": 96
+    },
+    "successful_results": 49,
+    "total_results": 50
 }
 ```
 
@@ -121,11 +139,6 @@ For more, visit the [Parser Preset documentation](https://developers.oxylabs.io/
 
 ---
 
-
-## The Structure of Parsing Instructions
-
-
-(The rest of your README continues here as before — no changes were made to the existing sections.)
 
 ## The structure of parsing instructions
 
