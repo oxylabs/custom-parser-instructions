@@ -27,7 +27,7 @@ With it, you can:
 - Manipulate strings with pre-defined functions and regex expressions;
 - Perform common string actions like conversion, indexing, and retrieving the length;
 - Do mathematical calculations, such as calculating the average, finding the maximum and minimum values, and multiplying values;
-- Save, reuse, and modify [Parser Presets](https://developers.oxylabs.io/scraping-solutions/web-scraper-api/features/result-processing-and-storage/custom-parser/parser-presets) by hosting them on our system;
+- Save, reuse, and modify [Parser Presets](https://developers.oxylabs.io/products/web-scraper-api/features/custom-parser) by hosting them on our system;
 - Enable **Self-healing** for your parser presets to make them resilient to minor layout changes automatically;
 - View performance and usage statistics of a preset over time.
 
@@ -134,7 +134,7 @@ These stats help you understand which parts of your parser might need manual rev
 - Regularly test against updated pages to ensure healing performance
 
 
-For more, visit the [Parser Preset documentation](https://developers.oxylabs.io/scraping-solutions/web-scraper-api/features/custom-parser/parser-presets).
+For more, visit the [Parser Preset documentation](https://developers.oxylabs.io/products/web-scraper-api/features/custom-parser).
 
 
 ---
@@ -144,7 +144,7 @@ For more, visit the [Parser Preset documentation](https://developers.oxylabs.io/
 
 To start off, you should already have a basic grasp of Oxylabs Scraper
 APIs. If you’re new to our web scraping solutions, you can familiarize
-yourself by reading our [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/web-scraper-api/features/custom-parser/getting-started).
+yourself by reading our [<u>documentation</u>](https://developers.oxylabs.io/products/web-scraper-api/features/custom-parser#quick-start).
 Note that you can only use one parser simultaneously – either a
 Dedicated Parser, Adaptive Parser, or Custom Parser.
 
@@ -156,7 +156,7 @@ You’re going to use XPath expressions or CSS selectors to select HTML nodes an
 basics of using XPath and CSS selectors.
 
 The two XPath functions of Custom Parser are `xpath`, which returns all
-matches, and `xpath_one`, which returns the first match. Similarly, there are also two CSS functions you can use – `css` to get all matches and `css_one` to get only the first match. You can learn more about other functions in our [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/web-scraper-api/features/custom-parser/list-of-functions).
+matches, and `xpath_one`, which returns the first match. Similarly, there are also two CSS functions you can use – `css` to get all matches and `css_one` to get only the first match. You can learn more about other functions in our [<u>documentation</u>](https://developers.oxylabs.io/products/web-scraper-api/features/custom-parser/writing-instructions-manually/list-of-functions).
 
 The structure of parsing instructions can be summed up into four main
 steps:
@@ -1059,5 +1059,5 @@ Writing parsing instructions with Custom Parser may seem daunting at
 first, but with a little practice, you’ll quickly pick it up. This guide
 aims to provide you with the fundamentals of creating parsing
 instructions, yet they highly depend on your target and the goal you’re
-trying to achieve. Explore our in-depth [<u>documentation</u>](https://developers.oxylabs.io/scraper-apis/web-scraper-api/features/custom-parser)
+trying to achieve. Explore our in-depth [<u>documentation</u>](https://developers.oxylabs.io/products/web-scraper-api/features/custom-parser)
 to find more about the functions and parameters of Custom Parser.
