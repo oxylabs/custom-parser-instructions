@@ -1,8 +1,8 @@
 # Custom Parser Instruction
 
-[![Oxylabs promo code](https://raw.githubusercontent.com/oxylabs/product-integrations/refs/heads/master/Affiliate-Universal-1090x275.png)](https://oxylabs.io/pages/gitoxy?utm_source=877&utm_medium=affiliate&groupid=877&utm_content=custom-parser-instructions-github&transaction_id=102f49063ab94276ae8f116d224b67)
+[![Oxylabs promo code](https://raw.githubusercontent.com/oxylabs/product-integrations/refs/heads/master/Affiliate-Universal-1090x275.png)](https://oxylabs.io/pages/gitoxy?utm_source=github&utm_medium=referral&utm_content=custom-parser-instructions&utm_campaign=banner&groupid=877)
 
-<a href="https://oxylabs.io"><img src="https://img.shields.io/badge/🚀_Get_Started-FF6B35?style=for-the-badge" alt="Get started"></a>
+<a href="https://oxylabs.io/?utm_source=github&utm_medium=referral&utm_content=custom-parser-instructions&utm_campaign=banner&groupid=877"><img src="https://img.shields.io/badge/🚀_Get_Started-FF6B35?style=for-the-badge" alt="Get started"></a>
 <a href="https://developers.oxylabs.io"><img src="https://img.shields.io/badge/📚_Documentation-4A90E2?style=for-the-badge" alt="Documentation"></a>
 <a href="https://dashboard.oxylabs.io"><img src="https://img.shields.io/badge/📊_Dashboard-2EA44F?style=for-the-badge" alt="Dashboard"></a>
 <a href="https://discord.gg/Pds3gBmKMH"><img src="https://img.shields.io/badge/💬_Discord-5865F2?style=for-the-badge" alt="Discord"></a>
@@ -22,7 +22,7 @@
   * [Product listings](#product-listings)
   * [Product page](#product-page)
 
-Custom Parser is a free feature of Oxylabs [<u>Scraper APIs</u>](https://oxylabs.io/products/scraper-api), which allows you to write your own parsing instructions for a chosen target when needed. The Custom Parser feature expands your options and flexibility throughout the entire scraping process on any website.
+Custom Parser is a free feature of Oxylabs [<u>Scraper APIs</u>](https://oxylabs.io/products/scraper-api?utm_source=github&utm_medium=referral&utm_content=custom-parser-instructions&groupid=877), which allows you to write your own parsing instructions for a chosen target when needed. The Custom Parser feature expands your options and flexibility throughout the entire scraping process on any website.
 
 With it, you can:
 
@@ -41,7 +41,7 @@ This guide will teach you the fundamentals of writing custom parsing instruction
 
 ## Self-healing parser presets
 
-Oxylabs' [Web Scraper API](https://oxylabs.io/products/scraper-api/web) now supports self-healing functionality in Parser Presets. This feature significantly improves scraping resilience by automatically adjusting parsing logic when target website structures change slightly.
+Oxylabs' [Web Scraper API](https://oxylabs.io/products/scraper-api/web?utm_source=github&utm_medium=referral&utm_content=custom-parser-instructions&groupid=877) now supports self-healing functionality in Parser Presets. This feature significantly improves scraping resilience by automatically adjusting parsing logic when target website structures change slightly.
 
 ### What are self-healing parser presets?
 
@@ -156,7 +156,7 @@ In essence, the parsing instructions have to be specified in the payload
 of the request, which is composed in a JSON format. Parsing instructions
 consist of HTML node selection and value transformation functions.
 
-You’re going to use XPath expressions or CSS selectors to select HTML nodes and extract data from them. We highly recommend reading our [<u>blog post</u>](https://oxylabs.io/blog/xpath-vs-css), where we introduce the
+You’re going to use XPath expressions or CSS selectors to select HTML nodes and extract data from them. We highly recommend reading our [<u>blog post</u>](https://oxylabs.io/blog/xpath-vs-css?utm_source=github&utm_medium=referral&utm_content=custom-parser-instructions&groupid=877), where we introduce the
 basics of using XPath and CSS selectors.
 
 The two XPath functions of Custom Parser are `xpath`, which returns all
